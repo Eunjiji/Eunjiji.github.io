@@ -1,0 +1,50 @@
+I"%<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//한줄주석</span>
+<span class="cm">/*여러줄 주석*/</span>
+<span class="n">주석바로달기</span> <span class="n">ctrl</span><span class="o">+/</span>
+<span class="o">-</span> <span class="n">변수를</span> <span class="n">만들</span> <span class="n">때</span> <span class="o">-</span> <span class="n">용도</span> <span class="o">,</span> <span class="n">이름</span><span class="o">,</span> <span class="n">초기값</span>
+<span class="o">-</span> <span class="n">숫자</span><span class="o">,</span> <span class="n">문자</span><span class="o">,</span> <span class="n">참거짓</span>
+
+<span class="kn">package</span> <span class="nn">chap01.ex01.define</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Variable</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+ 
+  <span class="kt">boolean</span> <span class="n">varBool</span><span class="o">=</span><span class="kc">true</span><span class="o">;</span> <span class="c1">//노란 밑줄 -&gt; 안쓰이는 변수인데 지워야 되는거 아냐?</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">varBool</span><span class="o">);</span>
+  
+  <span class="kt">int</span> <span class="n">varInt</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="c1">//일반적인 정수</span>
+  <span class="kt">long</span> <span class="n">varLong</span><span class="o">=</span><span class="mi">10000000</span><span class="o">;</span> <span class="c1">//연봉 혹은 월급 계산과 같은 큰 숫자 int&lt;long</span>
+  
+  <span class="kt">float</span> <span class="n">varFloat</span><span class="o">=</span><span class="mf">0.01f</span><span class="o">;</span> <span class="c1">//소숫점(일반적으로 사용)</span>
+  <span class="kt">double</span> <span class="n">varDouble</span><span class="o">=</span><span class="mf">0.0000001</span><span class="o">;</span> <span class="c1">//큰소수점(좌표계)</span>
+  
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">varFloat</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">varDouble</span><span class="o">);</span>
+  
+  <span class="c1">//문자용도(문자, 문자열)</span>
+  <span class="kt">char</span> <span class="n">varChar</span><span class="o">=</span><span class="sc">'A'</span><span class="o">;</span> <span class="c1">//char는 무조건 한글자</span>
+  <span class="nc">String</span> <span class="n">varString</span><span class="o">=</span><span class="s">"ABCEDG"</span><span class="o">;</span> <span class="c1">//string은 여러 글자 가능</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+ 
+ 
+<span class="kn">package</span> <span class="nn">chap01.ex02.scope</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">VarScope</span> <span class="o">{</span>
+ <span class="c1">// 변수는 외부에서 생성되면 사용가능</span>
+ <span class="c1">// 내부 생성되면 외부 사용 불가능</span>
+ <span class="c1">// 장바구니와 마트 바구니 차이</span>
+   
+ <span class="kd">static</span> <span class="nc">String</span> <span class="n">str</span><span class="o">=</span><span class="s">"장바구니"</span><span class="o">;</span> <span class="c1">//전역변수(외부에서도 사용가능)</span>
+ 
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// TODO Auto-generated method stub</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+  <span class="kt">int</span> <span class="n">num</span><span class="o">=</span><span class="mi">123</span><span class="o">;</span><span class="c1">//지역변수(내부는 외부에 사용될수 없다)</span>
+  <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">5</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">+</span><span class="s">":"</span><span class="o">+</span><span class="n">num</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+ 
+ <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET
