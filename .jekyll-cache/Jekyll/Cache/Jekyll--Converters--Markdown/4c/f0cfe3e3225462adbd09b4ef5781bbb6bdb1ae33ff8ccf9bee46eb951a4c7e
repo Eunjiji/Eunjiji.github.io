@@ -1,0 +1,96 @@
+I"A'<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 증감 연산자</span>
+<span class="kn">package</span> <span class="nn">chap02.ex01.one</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">One</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  
+  <span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span>
+  
+  <span class="n">x</span><span class="o">++;</span> <span class="c1">//증가가 나중에 2로 증가</span>
+  <span class="o">++</span><span class="n">y</span><span class="o">;</span> <span class="c1">//증가가 먼저</span>
+  
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"X : "</span><span class="o">+</span><span class="n">x</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Y : "</span><span class="o">+</span><span class="n">y</span><span class="o">);</span>
+  
+  <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="o">(++</span><span class="n">x</span><span class="o">)+</span><span class="mi">10</span><span class="o">;</span>
+  <span class="c1">//X가 먼저 2에서 3으로 증가하고 10과 합산 == 13</span>
+  <span class="kt">int</span> <span class="n">result2</span> <span class="o">=</span> <span class="o">(</span><span class="n">y</span><span class="o">++)+</span><span class="mi">10</span><span class="o">;</span>
+  <span class="c1">//y가 먼저 10과 합산되고 뒤늦게 3으로 증가 ==12</span>
+  
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"result : "</span><span class="o">+</span><span class="n">result</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"result2 : "</span><span class="o">+</span><span class="n">result2</span><span class="o">);</span>
+  
+  
+  <span class="cm">/* 논리부정 연산자 */</span>
+  <span class="kt">boolean</span> <span class="n">yn</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"YN : "</span><span class="o">+</span><span class="n">yn</span> <span class="o">);</span>
+  <span class="n">yn</span> <span class="o">=</span> <span class="o">!</span><span class="n">yn</span><span class="o">;</span> <span class="c1">// '!' 는오로지 boolean에서만 사용됨</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"YN : "</span><span class="o">+</span><span class="n">yn</span> <span class="o">);</span>
+  
+ <span class="o">}</span>
+<span class="o">}</span>
+ 
+
+<span class="kn">package</span> <span class="nn">chap02.ex01.two</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Two</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">//%연산(mod 연산)</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"5%2 = "</span><span class="o">+</span><span class="mi">5</span><span class="o">%</span><span class="mi">2</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+  
+  <span class="c1">//문자열 더하기</span>
+  <span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="s">"JDK"</span><span class="o">+</span><span class="mi">8</span><span class="o">+</span><span class="mf">0.65</span><span class="o">;</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">);</span>
+  
+  <span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="mi">8</span><span class="o">+</span><span class="mf">0.65</span><span class="o">+</span> <span class="s">"version"</span><span class="o">;</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str2</span><span class="o">);</span>
+  
+  
+ <span class="o">}</span>
+<span class="o">}</span>
+ 
+<span class="cm">/* 대입 연산자 */</span>
+<span class="kn">package</span> <span class="nn">chap02.ex02.two</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Substitution</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">//A += 10 -&gt; A = A+10</span>
+  <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"대입 연산자는 "</span><span class="o">;</span>
+  <span class="n">str</span> <span class="o">+=</span> <span class="s">"합 한 값을 "</span><span class="o">;</span>
+  <span class="n">str</span> <span class="o">+=</span> <span class="s">"누적하는데 "</span><span class="o">;</span>
+  <span class="n">str</span> <span class="o">+=</span> <span class="s">"유용하게 사용 된다."</span><span class="o">;</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+  <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+  <span class="n">num</span> <span class="o">+=</span><span class="mi">2</span><span class="o">;</span>
+  <span class="n">num</span> <span class="o">+=</span><span class="mi">3</span><span class="o">;</span>
+  <span class="n">num</span> <span class="o">+=</span><span class="mi">4</span><span class="o">;</span>
+  <span class="n">num</span> <span class="o">+=</span><span class="mi">5</span><span class="o">;</span>
+  
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+ 
+<span class="cm">/* 조건 연산자 */</span>
+<span class="kn">package</span> <span class="nn">chap02.ex03.three</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Three</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// 값 = 조건? 맞으면 : 틀리면</span>
+  <span class="kt">int</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">65</span><span class="o">;</span>
+  <span class="c1">//score 가 90보다 큰가?</span>
+  <span class="c1">//맞으면 A 아니면 B가 grade에 들어간다.</span>
+  
+  <span class="cm">/* 2018/08/09 박은지 - 더이상 사용 안함(곽부장님 지시 사항)
+  char grade = score &gt; 90 ? 'A' : 'B';
+  System.out.println("홍길동의 점수 : "+grade);
+  */</span>
+  
+  <span class="c1">//90보다 크면 A, 80보다 크면 B, 나머지는 C</span>
+  <span class="kt">char</span> <span class="n">grade2</span> <span class="o">=</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="mi">90</span> <span class="o">?</span> <span class="sc">'A'</span> <span class="o">:</span>  <span class="o">(</span><span class="n">score</span> <span class="o">&gt;</span><span class="mi">80</span><span class="o">)</span> <span class="o">?</span> <span class="sc">'B'</span> <span class="o">:</span> <span class="sc">'C'</span><span class="o">;</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"홍길동의 점수 : "</span><span class="o">+</span><span class="n">grade2</span><span class="o">);</span>
+ 
+  
+  
+  
+ <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

@@ -1,0 +1,11 @@
+I"<p><strong>※ spring boot 사용 시 cmd 창에서 java 소스 build 하기! </strong></p>
+
+<ol>
+  <li>
+    <p>sprint boot 폴더 mvnw 있는 곳 까지 들어가기</p>
+  </li>
+  <li>
+    <p>mvnw package -DskipTests=true 입력하면 빌드 완료</p>
+  </li>
+</ol>
+:ET

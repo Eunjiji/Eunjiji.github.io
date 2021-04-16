@@ -1,0 +1,123 @@
+I"�"<p><strong>&lt; static &gt;</strong></p>
+
+<ol>
+  <li>static final 은 절대 바꿀수 없는것을 의미한다 ( ex : 주민등록번호 )</li>
+  <li>static 영역은 클래스의 원본으로 주소가 이동되지 않는다.</li>
+</ol>
+
+<p><strong>&lt; final &gt;</strong></p>
+
+<ol>
+  <li>final 은 프로그램이 종료 될 때까지 바꿀수 없다.</li>
+  <li>final 은 read only의 개념</li>
+</ol>
+
+<hr />
+
+<p><strong>&lt; static 초기화 &gt;</strong></p>
+
+<p>- Main Class</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chap04.exam08.sBlock</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Monitor 속성 호출"</span><span class="o">);</span>
+  <span class="c1">//company, model, price</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Monitor</span><span class="o">.</span><span class="na">conpany</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Monitor</span><span class="o">.</span><span class="na">model</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Monitor</span><span class="o">.</span><span class="na">price</span><span class="o">);</span>
+  
+ <span class="o">}</span> 
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>- Monitor Class</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chap04.exam08.sBlock</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Monitor</span> <span class="o">{</span>
+ <span class="kd">static</span> <span class="nc">String</span> <span class="n">conpany</span> <span class="o">=</span> <span class="s">"LG"</span><span class="o">;</span>
+ <span class="kd">static</span> <span class="nc">String</span> <span class="n">model</span> <span class="o">=</span> <span class="s">"Wide Curved Monitor"</span><span class="o">;</span>
+ <span class="kd">static</span> <span class="kt">int</span> <span class="n">price</span><span class="o">;</span>
+ <span class="c1">//static은 객체화가 불가능 하므로 생성자에서 초기화도 불가능,</span>
+ <span class="c1">//static block 으로 초기화 한다.</span>
+ 
+ <span class="kd">static</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"price 초기화"</span><span class="o">);</span>
+  <span class="n">price</span> <span class="o">=</span> <span class="mi">1000000</span><span class="o">;</span>
+ <span class="o">}</span>
+ 
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>&lt; final 및 static 초기화 &gt;</strong></p>
+
+<p>- Main Class</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chap04.exam09.readOnly</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// 객체 생성시 초기화</span>
+  <span class="nc">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"KOREA"</span><span class="o">,</span><span class="s">"바악은지"</span><span class="o">);</span>
+  <span class="cm">/*final이 붙어 있으면 값 변경이 불가능 하다.
+   * person.name = "홍길동";
+   */</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">nation</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Person</span><span class="o">.</span><span class="na">ssn</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+ 
+
+</code></pre></div></div>
+
+<p>- Person Class</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chap04.exam09.readOnly</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+
+ <span class="kd">final</span> <span class="nc">String</span> <span class="n">nation</span><span class="o">;</span>
+ <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">ssn</span><span class="o">;</span> <span class="c1">//상수(CONSTANT)</span>
+ <span class="kd">final</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+ 
+ <span class="kd">static</span> <span class="o">{</span><span class="c1">//사실상 초기화가 불가능</span>
+  <span class="n">ssn</span> <span class="o">=</span> <span class="s">"180816-1234567"</span><span class="o">;</span>
+  
+ <span class="o">}</span>
+ 
+ 
+ <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="nc">String</span> <span class="n">nation</span><span class="o">,</span> <span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// final은 생성자에서 초기화 가능</span>
+  <span class="k">this</span><span class="o">.</span><span class="na">nation</span> <span class="o">=</span> <span class="n">nation</span><span class="o">;</span>
+  <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+  
+ <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>&lt; 상수 선언 &gt;</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chap04.exam10.constant</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+
+<span class="c1">//상수의 변수는 대문자로 작성 , static final 선언</span>
+ <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">NAME</span><span class="o">;</span>
+ <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">SSN</span><span class="o">;</span>
+ <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">GENDER</span><span class="o">;</span>
+ 
+ <span class="kd">static</span> <span class="o">{</span>
+  <span class="no">NAME</span> <span class="o">=</span> <span class="s">"PARK EUN JI"</span><span class="o">;</span>
+  <span class="no">SSN</span> <span class="o">=</span> <span class="s">"124245-752"</span><span class="o">;</span>
+  <span class="no">GENDER</span> <span class="o">=</span> <span class="s">"F"</span><span class="o">;</span>
+    
+ <span class="o">}</span>
+ 
+<span class="o">}</span>
+
+</code></pre></div></div>
+:ET

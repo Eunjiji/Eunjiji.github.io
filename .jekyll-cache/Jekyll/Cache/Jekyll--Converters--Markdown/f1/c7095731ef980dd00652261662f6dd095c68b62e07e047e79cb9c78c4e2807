@@ -1,0 +1,147 @@
+I"$<ul>
+  <li>추상화 메서드를 통해 공동 작업 시 규격을 잡아주는 역할</li>
+  <li>모든 메소드가 추상메소드인 경우</li>
+  <li>인터페이스는 객체를 만들지 못한다.</li>
+  <li>인터페이스는 모든 메소드가 추상 메소드라서 abstract를 따로 붙이지 않는다!</li>
+</ul>
+
+<hr />
+<p><br />
+<strong>- Main Class</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chapter06.exam03.inter</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  
+  <span class="nc">Window</span> <span class="n">win</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Window</span><span class="o">();</span>
+  <span class="nc">Linux</span> <span class="n">linux</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Linux</span><span class="o">();</span>
+  <span class="nc">Mac</span> <span class="n">mac</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Mac</span><span class="o">();</span>
+  
+  <span class="n">win</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+  <span class="n">win</span><span class="o">.</span><span class="na">dbClick</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+  <span class="n">linux</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+  <span class="n">linux</span><span class="o">.</span><span class="na">dbClick</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+  <span class="n">mac</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+  <span class="n">mac</span><span class="o">.</span><span class="na">dbClick</span><span class="o">(</span><span class="mi">6</span><span class="o">);</span>
+  
+  <span class="c1">//일반 메서드</span>
+  <span class="n">mac</span><span class="o">.</span><span class="na">wheel</span><span class="o">(</span><span class="mi">44</span><span class="o">);</span><span class="c1">//인터페이스는 객체를 만들지 못한다.</span>
+           <span class="c1">//따라서 구현된 다른 클래스를 이용</span>
+  
+  <span class="c1">//static 사용</span>
+  <span class="nc">MouseEvent</span><span class="o">.</span><span class="na">setDpi</span><span class="o">(</span><span class="mi">50</span><span class="o">);</span>
+  
+  <span class="c1">//Linux , Mac</span>
+  
+  
+  <span class="c1">//다형성 사용</span>
+  <span class="nc">MouseEvent</span> <span class="n">mou</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+  <span class="n">mou</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Linux</span><span class="o">();</span>
+  <span class="n">mou</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+  <span class="n">mou</span><span class="o">.</span><span class="na">dbClick</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+  <span class="n">mou</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Mac</span><span class="o">();</span>
+  <span class="n">mou</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+  <span class="n">mou</span><span class="o">.</span><span class="na">dbClick</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+  <span class="n">mou</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Window</span><span class="o">();</span>
+  <span class="n">mou</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+  <span class="n">mou</span><span class="o">.</span><span class="na">dbClick</span><span class="o">(</span><span class="mi">6</span><span class="o">);</span>
+  
+ <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p><strong>- MouseEvent Interface</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chapter06.exam03.inter</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MouseEvent</span> <span class="o">{</span>
+ <span class="c1">// 인터페이스에서는 추상메서드에서 abstract를 붙이지 않는다.</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">click</span><span class="o">(</span><span class="kt">int</span> <span class="n">btn</span><span class="o">);</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dbClick</span><span class="o">(</span><span class="kt">int</span> <span class="n">btn</span><span class="o">);</span>
+ <span class="kd">public</span> <span class="kt">double</span><span class="o">[]</span> <span class="nf">move</span><span class="o">();</span>
+ <span class="c1">// 인터페이스에서는 일반 메서드를 사용할 수 없다.</span>
+ <span class="c1">// JDK 1.8 부터는 가능</span>
+ <span class="c1">// default 안붙이면 추상 메소드 라고 인식</span>
+ <span class="kd">public</span> <span class="k">default</span> <span class="kt">void</span> <span class="nf">wheel</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"윗 방향으로 스크롤"</span><span class="o">);</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"아랫 방향으로 스크롤"</span><span class="o">);</span>
+  <span class="o">}</span>
+ <span class="o">}</span>
+ 
+ 
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setDpi</span><span class="o">(</span><span class="kt">int</span> <span class="n">dpi</span><span class="o">)</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"감도 조절 : "</span><span class="o">+</span><span class="n">dpi</span><span class="o">);</span>
+ <span class="o">}</span>
+ 
+ 
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p><strong>- Window MouseEvent  구현</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package chapter06.exam03.inter;
+//implements = 구현 / 구현은 인터페이스를 대상으로 한다.
+public class Window implements MouseEvent {
+ @Override
+ public void click(int btn) {
+  System.out.println(btn+"번 버튼 클릭");
+  
+ }
+ @Override
+ public void dbClick(int btn) {
+  System.out.println(btn+"번 버튼 더블 클릭");
+ }
+ @Override
+ public double[] move() {
+  
+  return null;
+ }
+}
+
+</code></pre></div></div>
+
+<p><strong>- Mac MouseEvent 구현</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package chapter06.exam03.inter;
+public class Mac implements MouseEvent {
+ @Override
+ public void click(int btn) {
+  System.out.println(btn+" 번 버튼 클릭");
+ }
+ @Override
+ public void dbClick(int btn) {
+  System.out.println(btn+" 번 버튼 더블 클릭");
+ }
+ @Override
+ public double[] move() {
+  // TODO Auto-generated method stub
+  return null;
+ }
+}
+
+</code></pre></div></div>
+
+<p><strong>- Linux MouseEvent 구현</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package chapter06.exam03.inter;
+public class Linux implements MouseEvent {
+ @Override
+ public void click(int btn) {
+  System.out.println(btn+" 번 버튼 클릭");
+ }
+ @Override
+ public void dbClick(int btn) {
+  System.out.println(btn+"번 버튼 더블 클릭");
+ }
+ @Override
+ public double[] move() {
+  // TODO Auto-generated method stub
+  return null;
+ }
+}
+
+</code></pre></div></div>
+:ET

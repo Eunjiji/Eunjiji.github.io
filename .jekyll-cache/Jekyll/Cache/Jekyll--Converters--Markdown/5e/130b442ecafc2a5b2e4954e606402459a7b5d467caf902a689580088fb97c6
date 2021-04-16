@@ -1,0 +1,78 @@
+I"�<p><strong>1. 메소드 오버라이딩이란?</strong><br />
+메소드 재정의라고도 한다. 부모에서 상속받은 메서드 자식에서 다시 정의 하는것을 말한다.</p>
+
+<p><strong>2. 정적바인딩</strong><strong>이란?</strong><br />
+객체의 타입이 컴파일러에 의해 컴파일 되는 시점에 결정되는 것 <br />
+ex) private , final , static</p>
+
+<p><strong>3. 동적바인딩이란?</strong><br />
+객체의 타입이 실행 중에 결정되는 것<br />
+ex) 상속의 오버라이딩의 예</p>
+
+<p><strong>4. super</strong><strong>와 </strong><strong>super() </strong><strong>생성자</strong><br />
+super = 부모 클래스의 멤버를 지칭할 때 사용<br />
+super() = 부모 클래스의 생성자를 호출할때 사용</p>
+
+<hr />
+
+<p>- Main Class</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chap05.exam04.tune</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="nc">MyCar</span> <span class="n">car</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyCar</span><span class="o">();</span>
+  <span class="n">car</span><span class="o">.</span><span class="na">start</span><span class="o">();</span><span class="c1">// 부모것이 호출</span>
+  <span class="n">car</span><span class="o">.</span><span class="na">run</span><span class="o">();</span><span class="c1">// 자식이 오버라이드 했기 때문에 자식의 run이 호출됨</span>
+  <span class="n">car</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span><span class="c1">// 부모</span>
+  <span class="n">car</span><span class="o">.</span><span class="na">sw</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+  <span class="n">car</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span><span class="c1">//자식이 바꾼 내용</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>- MyCar Class</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chap05.exam04.tune</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyCar</span> <span class="kd">extends</span> <span class="nc">ParentCar</span> <span class="o">{</span>
+ <span class="kt">boolean</span> <span class="n">sw</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+ <span class="c1">// 오버라이드</span>
+ <span class="nd">@Override</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+  <span class="c1">// super.run();//부모의 run을 가져다 쓰겠다</span>
+  <span class="c1">// 실행시키면 부모의 run이 실행됨</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"시속 100으로 달린다."</span><span class="o">);</span>
+ <span class="o">}</span>
+ <span class="nd">@Override</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stop</span><span class="o">()</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">sw</span><span class="o">)</span> <span class="o">{</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"정지 후 자동 주차"</span><span class="o">);</span><span class="c1">// 새 기능</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+   <span class="kd">super</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span><span class="c1">//부모의 기능</span>
+  <span class="o">}</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>- ParentCar Class</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chap05.exam04.tune</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ParentCar</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"시동을 건다."</span><span class="o">);</span>
+ <span class="o">}</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"시속 50으로 달린다."</span><span class="o">);</span>
+ <span class="o">}</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stop</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"정지한다."</span><span class="o">);</span>
+ <span class="o">}</span>
+ 
+ <span class="c1">//final 키워드가 붙으면 오버라이드 할 수 없다.</span>
+ <span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"자체 점검 "</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

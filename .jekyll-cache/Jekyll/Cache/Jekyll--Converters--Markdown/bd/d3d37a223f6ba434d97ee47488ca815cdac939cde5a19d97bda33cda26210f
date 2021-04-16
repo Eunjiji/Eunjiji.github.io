@@ -1,0 +1,73 @@
+I"<h5 id="객체화와-static">&lt; 객체화와 static&gt;</h5>
+
+<ol>
+  <li> ’.’  을 찍어서 불러온다.</li>
+  <li> static 영역은 클래스가 있는 영역이다.</li>
+  <li>객체에서는 static 영역에 들어갈 수 없다. ( 이는 원본에 따로 표시한 내용을 복사본에서 볼 수 없는 것과 같다. )</li>
+  <li>그래서 static 을 사용하기 위해서는 클래스로 접근한다.</li>
+</ol>
+
+<p><strong>&lt; Main Class &gt;</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Main Class */</span>
+<span class="kn">package</span> <span class="nn">chap04.exam07.sMember</span><span class="o">;</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="nc">Sub</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Sub</span><span class="o">();</span> <span class="c1">// 객체화 하는 이유 : 원본을 보호(복사)</span>
+  <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">multi</span><span class="o">(</span><span class="mi">6</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span> <span class="c1">// 정수를 넣어줘야함 변수 아님</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"답은 : "</span> <span class="o">+</span> <span class="n">result</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Sub</span><span class="o">.</span><span class="na">sFiled</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Sub</span><span class="o">.</span><span class="na">plus</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">4</span><span class="o">));</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Sub</span><span class="o">.</span><span class="na">minus</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">4</span><span class="o">));</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+ 
+ 
+
+</code></pre></div></div>
+
+<p><strong>&lt; Sub Class &gt;</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package chap04.exam07.sMember;
+public class Sub {
+ 
+ static int sFiled = 134;
+ 
+ static int plus(int a, int b) {
+  return a+b;
+ }
+ 
+ static int minus(int a,int b) {
+  return a-b;
+  
+ }
+ 
+ int multi(int a, int b) {
+  return a*b;
+ }
+ 
+
+}
+
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>&lt; 스스로를 객체화 할 수 있음 &gt;</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package chap04.exam07.sMember;
+public class Inner {
+ // static 영역
+ public static void main(String[] args) {
+  // msg를 쓰기 위해서 스스로를 객체화
+  Inner inner = new Inner();
+  inner.msg("hello");
+ }
+ // 객체화로 인해 heap에 있을 예정
+ void msg(String msg) {
+  System.out.println(msg);
+ }
+}
+</code></pre></div></div>
+
+<p><strong>… Static 부분은 다음글에서 더 자세히 다루겠음!</strong></p>
+:ET

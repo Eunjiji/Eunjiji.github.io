@@ -1,0 +1,140 @@
+I"�0<p><strong>1. 다형성이란?</strong><br />
+<strong>하나의 Type에 여러 객체를 관리 하는것</strong></p>
+
+<p><strong>- Main Class</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chap05.exam05.poly</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// 5개의 클래스를 객체화 하여 useRoom 메소드를 호출</span>
+  <span class="nc">Child</span> <span class="n">child1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Child</span><span class="o">();</span>
+  <span class="n">child1</span><span class="o">.</span><span class="na">useRoom</span><span class="o">();</span>
+  <span class="nc">ChildOne</span> <span class="n">child2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ChildOne</span><span class="o">();</span>
+  <span class="n">child2</span><span class="o">.</span><span class="na">useRoom</span><span class="o">();</span>
+  <span class="nc">ChildTwo</span> <span class="n">child3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ChildTwo</span><span class="o">();</span>
+  <span class="n">child3</span><span class="o">.</span><span class="na">useRoom</span><span class="o">();</span>
+  <span class="nc">ChildThree</span> <span class="n">child4</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ChildThree</span><span class="o">();</span>
+  <span class="n">child4</span><span class="o">.</span><span class="na">useRoom</span><span class="o">();</span>
+  <span class="nc">ChildFour</span> <span class="n">child5</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ChildFour</span><span class="o">();</span>
+  <span class="n">child5</span><span class="o">.</span><span class="na">useRoom</span><span class="o">();</span>
+  
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+  <span class="cm">/*
+   * 위에서는 각 객체를 호출 할 때 마다 거기에 맞는 변수를 선언
+   * 만약 그 객체가 30~40개 라면?? -&gt; 30~40 개 변수 선언
+   * 코드가 길어진다 , 힙 영역이 낭비된다.
+   * 그래서 우리는 한번에 다 수용 할 수 있는 변수를 만들어야 한다. = 다형성!
+   */</span>
+
+  <span class="c1">//다형성을 통해 공통점이 있는 형태 로 담는다.</span>
+  <span class="nc">ParentHouse</span> <span class="n">house</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="c1">//딱 하나의 변수 선언</span>
+  <span class="n">house</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Child</span><span class="o">();</span>
+  <span class="n">house</span><span class="o">.</span><span class="na">useRoom</span><span class="o">();</span>
+  
+  <span class="n">house</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ChildOne</span><span class="o">();</span>
+  <span class="n">house</span><span class="o">.</span><span class="na">useRoom</span><span class="o">();</span>
+  
+  <span class="n">house</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ChildTwo</span><span class="o">();</span>
+  <span class="n">house</span><span class="o">.</span><span class="na">useRoom</span><span class="o">();</span>
+  
+  <span class="n">house</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ChildThree</span><span class="o">();</span>
+  <span class="n">house</span><span class="o">.</span><span class="na">useRoom</span><span class="o">();</span>
+  
+  <span class="n">house</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ChildFour</span><span class="o">();</span>
+  <span class="n">house</span><span class="o">.</span><span class="na">useRoom</span><span class="o">();</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p><strong>- Child Class</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chap05.exam05.poly</span><span class="o">;</span>
+<span class="c1">//하나의 파일에 하나의 대표 클래스(public이 붙은 클래스)만이 존재 해야 한다.</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Child</span> <span class="kd">extends</span> <span class="nc">ParentHouse</span> <span class="o">{</span>
+ <span class="nd">@Override</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">useRoom</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"첫째 방 사용"</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+<span class="c1">//대표를 제외한 나머지 클래스는 public이 붙지 않는다.</span>
+<span class="kd">class</span> <span class="nc">ChildOne</span> <span class="kd">extends</span> <span class="nc">ParentHouse</span> <span class="o">{</span>
+ <span class="nd">@Override</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">useRoom</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"둘째 방 사용"</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ChildTwo</span> <span class="kd">extends</span> <span class="nc">ParentHouse</span> <span class="o">{</span>
+ <span class="nd">@Override</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">useRoom</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"셋째 방 사용"</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ChildThree</span> <span class="kd">extends</span> <span class="nc">ParentHouse</span> <span class="o">{</span>
+ <span class="nd">@Override</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">useRoom</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"넷째 방 사용"</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ChildFour</span> <span class="kd">extends</span> <span class="nc">ParentHouse</span> <span class="o">{</span>
+ <span class="nd">@Override</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">useRoom</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"다섯째 방 사용"</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+ 
+ 
+<span class="kn">package</span> <span class="nn">chap05.exam05.poly</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ParentHouse</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">useRoom</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"안방을 사용한다."</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>2. 프로모션이란?</strong> <br />
+** : 작은것을 큰그릇에 담는 다는 개념**</p>
+
+<p><strong>- Promotion Class</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chap05.exam06.promotion</span><span class="o">;</span>
+
+<span class="cm">/*
+ *                 Vertebrate : 척추 동물
+ *                  /         |
+ *              birds       Mamal
+ *              /     |   /     |
+ *    Chicken   Duck   Dog    Cat
+ */</span>
+<span class="kd">class</span> <span class="nc">Vertebrate</span><span class="o">{</span> <span class="o">}</span><span class="c1">//척추동물</span>
+<span class="kd">class</span> <span class="nc">Birds</span> <span class="kd">extends</span> <span class="nc">Vertebrate</span><span class="o">{</span> <span class="o">}</span><span class="c1">//조류</span>
+<span class="kd">class</span> <span class="nc">Mamal</span> <span class="kd">extends</span> <span class="nc">Vertebrate</span><span class="o">{</span> <span class="o">}</span><span class="c1">//포유류</span>
+<span class="kd">class</span> <span class="nc">Chicken</span> <span class="kd">extends</span> <span class="nc">Birds</span><span class="o">{</span> <span class="o">}</span><span class="c1">//치킨</span>
+<span class="kd">class</span> <span class="nc">Duck</span> <span class="kd">extends</span> <span class="nc">Birds</span><span class="o">{</span> <span class="o">}</span><span class="c1">//오리</span>
+<span class="kd">class</span> <span class="nc">Dog</span> <span class="kd">extends</span> <span class="nc">Mamal</span><span class="o">{</span> <span class="o">}</span><span class="c1">//개</span>
+<span class="kd">class</span> <span class="nc">Cat</span> <span class="kd">extends</span> <span class="nc">Mamal</span><span class="o">{</span> <span class="o">}</span><span class="c1">//고양이</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Promotion</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="nc">Vertebrate</span> <span class="n">척추동물</span><span class="o">;</span> <span class="c1">//척추동물이 가장 큰 개념</span>
+  <span class="n">척추동물</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Dog</span><span class="o">();</span> <span class="c1">// 작은것(강아지)을 큰그릇(척추동물)에 담는다!</span>
+  <span class="n">척추동물</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Cat</span><span class="o">();</span>
+  <span class="n">척추동물</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Duck</span><span class="o">();</span>
+  <span class="n">척추동물</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Chicken</span><span class="o">();</span>
+  
+  <span class="nc">Mamal</span> <span class="n">포유류</span><span class="o">;</span>
+  <span class="n">포유류</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Dog</span><span class="o">();</span>
+  <span class="n">포유류</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Cat</span><span class="o">();</span>
+  <span class="c1">//포유류를 상속받지 않았기 때문에 Promotion 불가</span>
+  <span class="c1">//포유류 = new Chicken();</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+:ET

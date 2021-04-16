@@ -1,0 +1,85 @@
+I"�<h1 id="django-환경설정">Django 환경설정</h1>
+
+<h3 id="pycharm-이용한-환경설정">Pycharm 이용한 환경설정</h3>
+
+<h3 id="1-project-생성">1. project 생성</h3>
+
+<ul>
+  <li>cmd나 git bash를 이용하여 project를 생성할 디렉토리에 접속 후 아래 명령어로  프로젝트 생성</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="p">[</span><span class="n">project</span> <span class="n">이름</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>→ [ project 이름 ] 디렉토리 + <a href="http://manage.py">manage.py</a> 생성완료</p>
+
+<p>→ 해당 파일을 Pycharm으로 open</p>
+
+<p><img src="Django%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%2055bd28a16cdd430aaf3346d79accc4e3/Untitled.png" alt="Django%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%2055bd28a16cdd430aaf3346d79accc4e3/Untitled.png" /></p>
+
+<h3 id="2-서버실행-및-연동-확인">2. 서버실행 및 연동 확인</h3>
+
+<ul>
+  <li>terminal에 manage.py가 있는 디렉토리로 이동 후 아래 명령어 입력</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">runserver</span>
+<span class="o">-&gt;</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8000</span> <span class="n">에</span> <span class="n">아래와</span> <span class="n">같은</span> <span class="n">화면이</span> <span class="n">뜨면</span> <span class="n">연동</span> <span class="n">성공</span>
+</code></pre></div></div>
+
+<p><img src="Django%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%2055bd28a16cdd430aaf3346d79accc4e3/Untitled%201.png" alt="Django%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%2055bd28a16cdd430aaf3346d79accc4e3/Untitled%201.png" /></p>
+
+<h3 id="3-앱만들기">3. 앱만들기</h3>
+
+<ul>
+  <li>앱은 프로젝트의 구성 단위 보통 기능별로 세분화함</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="p">[</span> <span class="n">app</span> <span class="n">이름</span> <span class="p">]</span>
+</code></pre></div></div>
+
+<p><img src="Django%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%2055bd28a16cdd430aaf3346d79accc4e3/Untitled%202.png" alt="Django%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%2055bd28a16cdd430aaf3346d79accc4e3/Untitled%202.png" /></p>
+
+<h3 id="4-templates-생성-html-파일-생성">4. templates 생성 (html 파일 생성)</h3>
+
+<ul>
+  <li>위에서 생성한 app 디렉토리 하위폴더로 templates를 생성후 원하는 html을 생성합니다.</li>
+</ul>
+
+<p><img src="Django%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%2055bd28a16cdd430aaf3346d79accc4e3/Untitled%203.png" alt="Django%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%2055bd28a16cdd430aaf3346d79accc4e3/Untitled%203.png" /></p>
+
+<h3 id="5-함수-생성">5. 함수 생성</h3>
+
+<ul>
+  <li>app의 안에 views.py에서 동작을 할 수 있게 해주는 함수 생성</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+		<span class="c1">#request를 받아서 index.html을 불러줌
+</span>    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'index.html'</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<h3 id="6-url-설계">6. url 설계</h3>
+
+<ul>
+  <li>url은 해당 url로 접근 시 정의되어있는 함수를 views.py에서 찾아 실행시킨다.</li>
+  <li>함수를 실행시켜야 하기 때문에 app에 있는 views를 import 해줘야함</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+		<span class="c1"># localhost:8000/admin/ 접근 시 admin page 열림
+</span>    <span class="n">path</span><span class="p">(</span><span class="s">'admin/'</span><span class="p">,</span> <span class="n">admin</span><span class="p">.</span><span class="n">site</span><span class="p">.</span><span class="n">urls</span><span class="p">),</span>
+		
+		<span class="c1"># localhost:8000/ 접근 시 views.py의 index 함수 호출
+</span>    <span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span> <span class="n">views</span><span class="p">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'index'</span><span class="p">)</span> 
+<span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="7-결과확인">7. 결과확인</h3>
+
+<p><img src="Django%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%2055bd28a16cdd430aaf3346d79accc4e3/Untitled%204.png" alt="Django%20%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%2055bd28a16cdd430aaf3346d79accc4e3/Untitled%204.png" /></p>
+:ET

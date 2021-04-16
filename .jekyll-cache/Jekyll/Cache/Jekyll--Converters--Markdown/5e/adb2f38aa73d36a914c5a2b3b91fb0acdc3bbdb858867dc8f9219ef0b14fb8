@@ -1,0 +1,90 @@
+I"'<h5 id="1-명시적-형변환">1. 명시적 형변환</h5>
+
+<p>- 사과상자의 크기 &gt; 못상자 크기 <br />
+- 사과상자가 못상자에 들어갈수 있는지 확인해 봐야됨</p>
+
+<h5 id="2묵시적형변환">2. 묵시적 형변환</h5>
+<p>- 작은상자는 볼 것도 없이 큰상자에 들어감<br />
+- 형변환(변수 공간 활용 최적화) <br />
+- 같은 크기지만 용도 변경으로 형변환을 하기도 함</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chap01.ex03.casting</span><span class="o">;</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Ex01</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="kt">byte</span> <span class="n">byteVal</span><span class="o">;</span>
+  <span class="kt">char</span> <span class="n">charVal</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">intVal</span><span class="o">;</span>
+  <span class="kt">long</span> <span class="n">longVal</span><span class="o">;</span>
+  <span class="kt">float</span> <span class="n">floatVal</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="kt">double</span> <span class="n">doubleVal</span><span class="o">;</span>
+  
+  <span class="c1">//크기순서 byte &lt; char &lt; int  일반적으로 utf=3byte(영어 1 한국어 2)</span>
+  <span class="n">byteVal</span><span class="o">=</span><span class="mi">10</span><span class="o">;</span> <span class="c1">//byte는 기본숫자</span>
+  <span class="n">charVal</span><span class="o">=</span><span class="sc">'A'</span><span class="o">;</span> <span class="c1">//char는 문자다. (문자는 숫자에 대한 유니코드)</span>
+  <span class="n">intVal</span><span class="o">=</span><span class="n">byteVal</span><span class="o">;</span> <span class="c1">//가능하다 int&gt;byte 작은걸 큰거에 대입하는건 묵시적 형변환</span>
+  <span class="n">intVal</span><span class="o">=</span><span class="n">charVal</span><span class="o">;</span> <span class="c1">//묵시적 형변환</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">intVal</span><span class="o">);</span> <span class="c1">//A에 대한 유니코드</span>
+  
+  <span class="c1">//long &gt; int</span>
+  <span class="n">longVal</span><span class="o">=</span><span class="n">intVal</span><span class="o">;</span>
+  
+  <span class="c1">//double &gt; float</span>
+  <span class="n">doubleVal</span><span class="o">=</span><span class="n">floatVal</span><span class="o">;</span>
+  
+ <span class="o">}</span>
+<span class="o">}</span>
+ 
+ 
+<span class="kn">package</span> <span class="nn">chap01.ex03.casting</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Ex02</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">//명시적 형변환 (큰-&gt;작,동일 크기 끼리 용도 변환 할때)</span>
+  <span class="kt">char</span> <span class="n">charVal</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">intVal</span><span class="o">;</span>
+  <span class="kt">long</span> <span class="n">longVal</span><span class="o">;</span>
+  <span class="kt">float</span> <span class="n">floatVal</span><span class="o">;</span>
+  <span class="kt">double</span> <span class="n">doubleVal</span><span class="o">;</span>
+  
+  <span class="n">intVal</span><span class="o">=</span><span class="mi">44032</span><span class="o">;</span>
+  <span class="n">charVal</span><span class="o">=(</span><span class="kt">char</span><span class="o">)</span><span class="n">intVal</span><span class="o">;</span> <span class="c1">//큰-&gt;작 못들어감 명시적 형변환</span>
+  
+  <span class="c1">//명시적 형변환은 이클립스가 보통 알아서 해준다(100%는 아님)</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">charVal</span><span class="o">);</span>
+  <span class="n">longVal</span><span class="o">=</span><span class="mi">500</span><span class="o">;</span>
+  
+  <span class="c1">//long -&gt; int</span>
+  <span class="n">intVal</span><span class="o">=(</span><span class="kt">int</span><span class="o">)</span><span class="n">longVal</span><span class="o">;</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">intVal</span><span class="o">);</span>
+  
+  
+  <span class="n">doubleVal</span><span class="o">=</span><span class="mf">3.14</span><span class="o">;</span>
+  
+  <span class="c1">//double -&gt; float</span>
+  <span class="n">floatVal</span><span class="o">=(</span><span class="kt">float</span><span class="o">)</span><span class="n">doubleVal</span><span class="o">;</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">floatVal</span><span class="o">);</span>
+ 
+ <span class="o">}</span>
+<span class="o">}</span>
+ 
+ 
+<span class="kn">package</span> <span class="nn">chap01.ex03.casting</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Ex03</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"byte 최대값 : "</span><span class="o">+</span><span class="nc">Byte</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"byte 최대값 : "</span><span class="o">+</span><span class="nc">Byte</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">);</span>
+  
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"int 최대값 : "</span><span class="o">+</span><span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"int 최소값 : "</span><span class="o">+</span><span class="nc">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">);</span>
+  
+  <span class="c1">//long, float, double 최소 최대</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"long 최대값 : "</span><span class="o">+</span><span class="nc">Long</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"long 최소값 : "</span><span class="o">+</span><span class="nc">Long</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">);</span>
+  
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"float 최대값 : "</span><span class="o">+</span><span class="nc">Float</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"float 최소값 : "</span><span class="o">+</span><span class="nc">Float</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">);</span>
+  
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"double 최대값 : "</span><span class="o">+</span><span class="nc">Double</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"double 최소값 : "</span><span class="o">+</span><span class="nc">Double</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

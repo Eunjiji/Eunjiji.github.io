@@ -1,0 +1,96 @@
+I"	"<p>- 생성자 오버로드 : 다양한 방법으로 객체 생성 가능<br />
+- 오버로딩은 철저히 사용자의 편의를 위해 만들어짐<br />
+- <span style="color:red">인자값의 수나 타입이 달라야 한다.</span></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* 생성자 오버로딩 */</span>
+<span class="kn">package</span> <span class="nn">chap04.exam03.cons</span><span class="o">;</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Robot</span> <span class="o">{</span>
+ 
+ <span class="kd">public</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+ <span class="kd">public</span> <span class="nc">String</span> <span class="n">goal</span><span class="o">;</span>
+ <span class="kd">public</span> <span class="nf">Robot</span><span class="o">()</span> <span class="o">{</span>
+  
+ <span class="o">}</span>
+ 
+ <span class="kd">public</span> <span class="nf">Robot</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="o">;</span>
+ <span class="o">}</span>
+ 
+ 
+ <span class="kd">public</span> <span class="nf">Robot</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span><span class="nc">String</span> <span class="n">goal</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">//객체화 하면 생성자가 가장 먼저 실행됨</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">" 음 ~ 칰힌 롸봐트 생성"</span><span class="o">);</span>
+  <span class="c1">//초기화</span>
+  <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="o">;</span>
+  <span class="n">goal</span><span class="o">=</span><span class="n">goal</span><span class="o">;</span>
+  
+ 
+ <span class="o">}</span>
+<span class="o">}</span>
+
+
+
+<span class="cm">/* 생성자 + this */</span>
+<span class="kn">package</span> <span class="nn">chap04.exam04.overload</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NoteBook</span> <span class="o">{</span>
+ 
+ <span class="nc">String</span> <span class="n">model</span><span class="o">;</span>
+ <span class="kt">int</span> <span class="n">price</span><span class="o">;</span>
+ <span class="nc">String</span> <span class="n">color</span><span class="o">;</span>
+ <span class="kd">public</span> <span class="nf">NoteBook</span><span class="o">()</span> <span class="o">{</span>
+  <span class="c1">// TODO Auto-generated constructor stub</span>
+ <span class="o">}</span>
+ 
+ <span class="kd">public</span> <span class="nf">NoteBook</span><span class="o">(</span><span class="nc">String</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">=</span><span class="n">model</span><span class="o">;</span>
+  <span class="c1">//this 뒤의 값이 맨위 변수 선언한 이름</span>
+  <span class="c1">//내가 메인에서 입력받은 값 내 변수에 넣어줌</span>
+ <span class="o">}</span>
+ <span class="kd">public</span> <span class="nf">NoteBook</span><span class="o">(</span><span class="nc">String</span> <span class="n">model</span><span class="o">,</span> <span class="kt">int</span> <span class="n">price</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">=</span><span class="n">model</span><span class="o">;</span>
+  <span class="k">this</span><span class="o">.</span><span class="na">price</span><span class="o">=</span><span class="n">price</span><span class="o">;</span>
+ <span class="o">}</span>
+ <span class="kd">public</span> <span class="nf">NoteBook</span><span class="o">(</span><span class="kt">int</span> <span class="n">price</span><span class="o">)</span> <span class="o">{</span>
+  
+  <span class="k">this</span><span class="o">.</span><span class="na">price</span><span class="o">=</span><span class="n">price</span><span class="o">;</span>
+ <span class="o">}</span>
+ <span class="kd">public</span> <span class="nf">NoteBook</span><span class="o">(</span><span class="nc">String</span> <span class="n">model</span><span class="o">,</span> <span class="nc">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">=</span><span class="n">model</span><span class="o">;</span>
+  <span class="k">this</span><span class="o">.</span><span class="na">color</span><span class="o">=</span><span class="n">color</span><span class="o">;</span>
+ <span class="o">}</span>
+ <span class="kd">public</span> <span class="nf">NoteBook</span><span class="o">(</span><span class="kt">int</span> <span class="n">price</span><span class="o">,</span> <span class="nc">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+  
+  <span class="k">this</span><span class="o">.</span><span class="na">price</span><span class="o">=</span><span class="n">price</span><span class="o">;</span>
+  <span class="k">this</span><span class="o">.</span><span class="na">color</span><span class="o">=</span><span class="n">color</span><span class="o">;</span>
+ <span class="o">}</span>
+ <span class="kd">public</span> <span class="nf">NoteBook</span><span class="o">(</span><span class="nc">String</span> <span class="n">model</span><span class="o">,</span> <span class="kt">int</span> <span class="n">price</span><span class="o">,</span> <span class="nc">String</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+  
+  <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">=</span><span class="n">model</span><span class="o">;</span>
+  <span class="k">this</span><span class="o">.</span><span class="na">price</span><span class="o">=</span><span class="n">price</span><span class="o">;</span>
+  <span class="k">this</span><span class="o">.</span><span class="na">color</span><span class="o">=</span><span class="n">color</span><span class="o">;</span>
+ <span class="o">}</span>
+
+<span class="o">}</span>
+ 
+ 
+
+<span class="kn">package</span> <span class="nn">chap04.exam05.memnerCall</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  
+  <span class="nc">Car</span> <span class="n">car</span><span class="o">=</span><span class="k">new</span> <span class="nc">Car</span><span class="o">();</span>
+  <span class="nc">Car</span> <span class="n">car2</span><span class="o">=</span><span class="k">new</span> <span class="nc">Car</span><span class="o">();</span>
+  <span class="nc">Car</span> <span class="n">car3</span><span class="o">=</span><span class="k">new</span> <span class="nc">Car</span><span class="o">();</span>
+  <span class="nc">Car</span> <span class="n">car4</span><span class="o">=</span><span class="k">new</span> <span class="nc">Car</span><span class="o">();</span>
+  <span class="c1">//위 네개의 객체는 모두 다르다.(같은 원본이지만 복사본이기 때문)</span>
+  
+  <span class="n">car</span><span class="o">.</span><span class="na">Start</span><span class="o">();</span> <span class="c1">//</span>
+  <span class="n">car</span><span class="o">.</span><span class="na">Start</span><span class="o">();</span>
+  <span class="n">car</span><span class="o">.</span><span class="na">change</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+  <span class="n">car</span><span class="o">.</span><span class="na">change</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+  <span class="n">car</span><span class="o">.</span><span class="na">change</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+  
+ <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+:ET

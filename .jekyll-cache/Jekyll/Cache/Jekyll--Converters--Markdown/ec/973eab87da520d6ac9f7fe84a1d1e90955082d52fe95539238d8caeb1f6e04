@@ -1,0 +1,94 @@
+I"	<ul>
+  <li>추상은 여러 객체의 공통되는 특성만을 추출한 것</li>
+  <li>추상화는 <strong>abstract</strong> 가 붙는다.</li>
+  <li>추상 클래스는 객체화가 불가능 하다. ( 단, 자식이 오버라이드 하여 사용 할 수 있음 )</li>
+  <li>추상 클래스는 실체 클래스와 <strong>상속</strong>관계!</li>
+</ul>
+
+<p><strong>- Main Class</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chapter06.exam02.absmethod</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="nc">Child</span> <span class="n">drum</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Child</span><span class="o">();</span>
+  <span class="c1">//추상 메서드를 구현한 내용은 자식으로 오버라이드 받아 사용해야함</span>
+  <span class="n">drum</span><span class="o">.</span><span class="na">세탁</span><span class="o">();</span>
+  <span class="n">drum</span><span class="o">.</span><span class="na">헹구기</span><span class="o">();</span>
+  <span class="n">drum</span><span class="o">.</span><span class="na">탈수하기</span><span class="o">();</span>
+  <span class="c1">//추상 클래스의 일반 메서드 호출</span>
+  <span class="n">drum</span><span class="o">.</span><span class="na">건조하기</span><span class="o">();</span>
+  
+ <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>- Child Class</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chapter06.exam02.absmethod</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Child</span> <span class="kd">extends</span> <span class="nc">Laundry</span> <span class="o">{</span>
+ <span class="nd">@Override</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="n">세탁</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"세탁하기"</span><span class="o">);</span>
+ <span class="o">}</span>
+ <span class="nd">@Override</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="n">헹구기</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"헹구기"</span><span class="o">);</span>
+ <span class="o">}</span>
+ <span class="nd">@Override</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="n">탈수하기</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"탈수하기"</span><span class="o">);</span>
+ <span class="o">}</span>
+ <span class="nd">@Override</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="n">건조하기</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"건조하기"</span><span class="o">);</span>
+  
+ <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p><strong>- Laundry Class</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chapter06.exam02.absmethod</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Laundry</span> <span class="o">{</span>
+ <span class="c1">//무조건 만들어야 하는 기능들</span>
+ <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="n">세탁</span><span class="o">();</span>
+ <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="n">헹구기</span><span class="o">();</span>
+ <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="n">탈수하기</span><span class="o">();</span>
+ <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="n">건조하기</span><span class="o">();</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p><strong>- Abs Class</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chapter06.exam02.absmethod</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Abs</span> <span class="o">{</span>
+ <span class="c1">// 추상 메서드 - 오버라이드 해서 사용 가능</span>
+ <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">must1</span><span class="o">();</span>
+ <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">must2</span><span class="o">();</span>
+ 
+ <span class="c1">//자식이 그냥 쓰는게 가능, 오버라이드 해서 사용 가능</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">parent</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"부모 메서드"</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p><strong>- Concrete Class</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">chapter06.exam02.absmethod</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Concrete</span> <span class="kd">extends</span> <span class="nc">Abs</span> <span class="o">{</span>
+ <span class="nd">@Override</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">must1</span><span class="o">()</span> <span class="o">{</span>
+  
+ <span class="o">}</span>
+ <span class="nd">@Override</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">must2</span><span class="o">()</span> <span class="o">{</span>
+  
+ <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+:ET

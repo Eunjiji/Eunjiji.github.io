@@ -1,0 +1,99 @@
+I"�#<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* if문 예시 */</span>
+<span class="kn">package</span> <span class="nn">chap02.ex04.ifstate</span><span class="o">;</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StmtIf</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"철수가 두부를 사러간다."</span><span class="o">);</span>
+  <span class="kt">int</span> <span class="n">tubuBox</span> <span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+  <span class="k">if</span><span class="o">(</span><span class="n">tubuBox</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span><span class="c1">// 두부가 있을 경우에만 실행</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"두부를 산다."</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="k">if</span><span class="o">(</span><span class="n">tubuBox</span><span class="o">&lt;=</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span><span class="c1">//두부가 없을 경우에만 실행</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"순두부를 산다."</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"집에 온다."</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+
+
+
+<span class="cm">/* else if문 예시 */</span>
+<span class="kn">package</span> <span class="nn">chap02.ex04.ifstate</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StmtElseif</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"음료를 입력하세요 :"</span><span class="o">);</span>
+  <span class="nc">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+  <span class="nc">String</span> <span class="n">item</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">item</span> <span class="o">+</span> <span class="s">"을 선택 하셨습니다."</span><span class="o">);</span>
+  <span class="c1">//콜라, 생수, 주스, 사이다</span>
+  <span class="c1">//00가 나왔습니다.</span>
+  <span class="cm">/*
+  if(item.equals("콜라")) {
+   System.out.println("콜라가 나왔습니다.");
+  }
+  
+  if(item.equals("생수")) {
+   System.out.println("생수가 나왔습니다.");
+  }
+  
+  if(item.equals("주스")) {
+   System.out.println("주스가 나왔습니다.");
+  }
+  
+  if(item.equals("사이다")) {
+   System.out.println("사이다가 나왔습니다.");
+  }
+  
+  */</span>
+  
+  <span class="k">if</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"콜라"</span><span class="o">))</span> <span class="o">{</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"콜라가 나왔습니다."</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"생수"</span><span class="o">))</span> <span class="o">{</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"생수가 나왔습니다."</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"주스"</span><span class="o">))</span> <span class="o">{</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"주스가 나왔습니다."</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"사이다"</span><span class="o">))</span> <span class="o">{</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"사이다가 나왔습니다."</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="k">else</span> <span class="o">{</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"주문하신 음료는 저희 메뉴에 없는 메뉴입니다."</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  
+  
+  
+ <span class="o">}</span>
+<span class="o">}</span>
+
+
+
+<span class="cm">/* else문 예시 */</span>
+<span class="kn">package</span> <span class="nn">chap02.ex04.ifstate</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StmtElse</span> <span class="o">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// 두부가 있으면 사오고 없으면 순두부 사오고</span>
+  
+  <span class="kt">int</span> <span class="n">tudu</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"찰스가 두부를 사러 간다."</span><span class="o">);</span>
+  <span class="k">if</span><span class="o">(</span><span class="n">tudu</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"두부를 산다."</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="k">else</span> <span class="o">{</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"순두부를 산다."</span><span class="o">);</span>
+  <span class="o">}</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"집에 가자!"</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET
